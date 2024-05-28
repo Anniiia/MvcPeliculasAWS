@@ -1,0 +1,90 @@
+﻿@model List<Pelicula>
+
+ <h1>Listado peliculas por actor</h1>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<form method="post">
+    <label>Nombre del Actor</label>
+    <input type="text" name="actor" class="form-control" />
+    <button class="btn btn-dark">Buscar</button>
+</form>
+
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Id Pelicula
+                </th>
+                <th>
+                    Genero
+                </th>
+                <th>
+                    Titulo
+                </th>
+                <th>
+                   Argumento
+                </th>
+                <th>
+                    Foto
+                </th>
+                <th>
+                    Actores
+                </th>
+                <th>
+                   Precio
+                </th>
+                <th>
+                    Youtube
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.IdPelicula
+                    </td>
+                    <td>
+                        @item.Genero
+                    </td>
+                    <td>
+                        @item.Titulo
+                    </td>
+                    <td>
+                        @item.Argumento
+                    </td>
+                    <td>
+                        <img src="~/imagespelis/@item.Foto" style="width:100px;height:150px;" />
+                        @*                 @Html.DisplayFor(modelItem => item.Foto) *@
+                    </td>
+                    <td>
+                        @item.Actores
+                    </td>
+                    <td>
+                        @item.Precio
+                    </td>
+                    <td>
+                        @item.YouTube
+                    </td>
+                    <td>
+                        <a asp-controller="Peliculas" asp-action="Edit" asp-route-id="@item.IdPelicula" class="btn btn-info">Editar</a>
+                        <a asp-controller="Peliculas" asp-action="Details" asp-route-id="@item.IdPelicula" class="btn btn-warning">Detalles</a>
+                        <a asp-controller="Peliculas" asp-action="Delete" asp-route-id="@item.IdPelicula" class="btn btn-danger">Eliminar</a>
+                        @* @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
