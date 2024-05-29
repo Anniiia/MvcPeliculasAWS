@@ -1,6 +1,6 @@
 ﻿@model List<Pelicula>
 @{
-    string UrlBucket = configuration.GetValue<string>("AWS:S3BucketUrl");
+    string UrlBucket = keysModel.BucketUrl;
 }
  <h1>Listado peliculas por actor</h1>
 
