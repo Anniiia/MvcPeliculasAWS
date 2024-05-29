@@ -1,9 +1,12 @@
+using Amazon.S3;
 using MvcPeliculasAWS.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddAWSService<IAmazonS3>();
 builder.Services.AddTransient<ServiceApiPeliculas>();
+builder.Services.AddTransient<ServiceStorageAWS>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

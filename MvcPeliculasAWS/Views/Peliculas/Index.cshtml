@@ -2,6 +2,9 @@
 
 @{
     ViewData["Title"] = "Index";
+
+    string UrlBucket = configuration.GetValue<string>("AWS:S3BucketUrl");
+
 }
 
 <h1>Index</h1>
@@ -58,7 +61,7 @@
                 @Html.DisplayFor(modelItem => item.Argumento)
             </td>
             <td>
-                    <img src="~/imagespelis/@item.Foto" style="width:100px;height:150px;" />
+                    <img src="@UrlBucket@item.Foto" style="width:100px;height:150px;" />
 @*                 @Html.DisplayFor(modelItem => item.Foto) *@
             </td>
             <td>
